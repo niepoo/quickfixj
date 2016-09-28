@@ -423,11 +423,11 @@ public class MessageCodeGenerator {
     public static void main(String[] args) {
         MessageCodeGenerator codeGenerator = new MessageCodeGenerator();
         try {
-            if (args.length != 3) {
-                String classname = MessageCodeGenerator.class.getName();
-                System.err.println("usage: " + classname + " specDir xformDir outputBaseDir");
-                return;
-            }
+//            if (args.length != 3) {
+//                String classname = MessageCodeGenerator.class.getName();
+//                System.err.println("usage: " + classname + " specDir xformDir outputBaseDir");
+//                return;
+//            }
 
             boolean overwrite = getOption(OVERWRITE_OPTION, true);
             boolean orderedFields = getOption(ORDERED_FIELDS_OPTION, false);
@@ -435,20 +435,58 @@ public class MessageCodeGenerator {
 
             long start = System.currentTimeMillis();
             final String[] versions = { "FIXT 1.1", "FIX 5.0", "FIX 4.4", "FIX 4.3", "FIX 4.2",
-                    "FIX 4.1", "FIX 4.0" };
+                    "FIX 4.1", "FIX 4.0", "FIX 5.0sp1", "FIX 5.0sp2" };
+            final String[] SpecificationPath = { 
+            		"../quickfixj-messages/quickfixj-messages-fixt11/src/main/resources",
+            		"../quickfixj-messages/quickfixj-messages-fix50/src/main/resources",
+            		"../quickfixj-messages/quickfixj-messages-fix44/src/main/resources",
+            		"../quickfixj-messages/quickfixj-messages-fix43/src/main/resources",
+            		"../quickfixj-messages/quickfixj-messages-fix42/src/main/resources",
+            		"../quickfixj-messages/quickfixj-messages-fix41/src/main/resources",
+            		"../quickfixj-messages/quickfixj-messages-fix40/src/main/resources",
+            		"../quickfixj-messages/quickfixj-messages-fix50sp1/src/main/resources",
+            		"../quickfixj-messages/quickfixj-messages-fix50sp2/src/main/resources"
+                    };
+            final String[] TransformDirectoryPath = { 
+            		"../quickfixj-codegenerator/src/main/resources/org/quickfixj/codegenerator", 
+            		"../quickfixj-codegenerator/src/main/resources/org/quickfixj/codegenerator", 
+            		"../quickfixj-codegenerator/src/main/resources/org/quickfixj/codegenerator", 
+            		"../quickfixj-codegenerator/src/main/resources/org/quickfixj/codegenerator", 
+            		"../quickfixj-codegenerator/src/main/resources/org/quickfixj/codegenerator", 
+            		"../quickfixj-codegenerator/src/main/resources/org/quickfixj/codegenerator", 
+            		"../quickfixj-codegenerator/src/main/resources/org/quickfixj/codegenerator", 
+            		"../quickfixj-codegenerator/src/main/resources/org/quickfixj/codegenerator", 
+            		"../quickfixj-codegenerator/src/main/resources/org/quickfixj/codegenerator"
+                    };
+            final String[] OutputBaseDirectoryPath = { 
+            		"../quickfixj-core/src/main/java", 
+            		"../quickfixj-core/src/main/java", 
+            		"../quickfixj-core/src/main/java", 
+            		"../quickfixj-core/src/main/java", 
+            		"../quickfixj-core/src/main/java", 
+            		"../quickfixj-core/src/main/java", 
+            		"../quickfixj-core/src/main/java", 
+            		"../quickfixj-core/src/main/java", 
+            		"../quickfixj-core/src/main/java"
+                    };
+            int i =0;
             for (String ver : versions) {
                 Task task = new Task();
                 task.setName(ver);
                 final String version = ver.replaceAll("[ .]", "");
-                task.setSpecification(new File(args[0] + "/" + version + ".xml"));
-                task.setTransformDirectory(new File(args[1]));
+//                task.setSpecification(new File(args[0] + "/" + version + ".xml"));
+                task.setSpecification(new File(SpecificationPath[i] + "/" + version + ".xml"));
+//                task.setTransformDirectory(new File(args[1]));
+                task.setTransformDirectory(new File(TransformDirectoryPath[i]));
                 task.setMessagePackage("quickfix." + version.toLowerCase());
-                task.setOutputBaseDirectory(new File(args[2]));
+//                task.setOutputBaseDirectory(new File(args[2]));
+                task.setOutputBaseDirectory(new File(OutputBaseDirectoryPath[i]));
                 task.setFieldPackage("quickfix.field");
                 task.setOverwrite(overwrite);
                 task.setOrderedFields(orderedFields);
                 task.setDecimalGenerated(useDecimal);
                 codeGenerator.generate(task);
+                i++;
             }
             double duration = System.currentTimeMillis() - start;
             DecimalFormat durationFormat = new DecimalFormat("#.###");

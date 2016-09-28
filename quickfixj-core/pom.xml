@@ -7,7 +7,6 @@
 	</parent>
 
 	<artifactId>quickfixj-core</artifactId>
-	<packaging>bundle</packaging>
 
 	<name>QuickFIX/J Core engine</name>
 	<description>The core QuickFIX/J engine</description>
@@ -187,7 +186,7 @@
 		</testResources>
 
 		<plugins>
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.quickfixj</groupId>
 				<artifactId>quickfixj-codegenerator</artifactId>
 				<version>${project.version}</version>
@@ -301,7 +300,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
@@ -318,7 +317,7 @@
 						<exclude>quickfix/fix*/**</exclude>
 					</excludes>
 				</configuration>
-			</plugin>
+			</plugin>-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>

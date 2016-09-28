@@ -43,7 +43,7 @@
 			<version>${project.version}</version>
 		</dependency>
 
-		<dependency>
+<!-- 		<dependency>
 			<groupId>org.quickfixj</groupId>
 			<artifactId>quickfixj-examples-banzai</artifactId>
 			<version>${project.version}</version>
@@ -57,7 +57,7 @@
 			<groupId>org.quickfixj</groupId>
 			<artifactId>quickfixj-examples-ordermatch</artifactId>
 			<version>${project.version}</version>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>org.quickfixj</groupId>
