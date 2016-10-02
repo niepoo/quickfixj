@@ -65,7 +65,17 @@ public class RoundQueue<T> implements Serializable{
          
         return tempLog;
     }
-     
+    /**
+     * 获取第一个元素
+     * @return int
+     */
+    public T getFirst(){
+        if(isEmpty()){
+            throw new NoSuchElementException();
+        }
+        T tempLog=queue[head];
+        return tempLog;
+    }  
     
    /**
     * 获取队列尾的一个元素
