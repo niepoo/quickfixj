@@ -17,7 +17,13 @@
 	<properties>
 		<mainClass>quickfix.examples.executor.Executor</mainClass>
 	</properties>
-
+	<dependencies>
+		<dependency>
+			<groupId>com.dbcon.base</groupId>
+			<artifactId>database</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>

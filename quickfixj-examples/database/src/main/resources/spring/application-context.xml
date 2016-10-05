@@ -6,6 +6,7 @@
   http://www.springframework.org/schema/context
   http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
+    <bean id="springContextHolder" class="com.dbcon.base.util.SpringContextHolder"/>  
 	<bean id="validator"
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 	<bean id="beanValidator"

@@ -3,6 +3,8 @@ package quickfix.examples.datapub;
 import java.util.Iterator;
 import java.util.Map;
 
+import quickfix.examples.vo.MarketRealDataVo;
+
 public class TestMain {
  
     public static void main(String[] args) {

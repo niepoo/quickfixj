@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="quickfix.examples.dao.IMarketDataDao">
+	<resultMap id="marketDataVo" type="quickfix.examples.vo.MarketRealDataVo">
+		<id property="uuid" column="UUID" />
+		<result property ="quotetime" column="QUOTETIME" />
+		<result property ="marketTime" column="MARKETTIME" />    
+		<result property ="secucode"  column="SECUCODE" />     
+		<result property ="secuname"  column="SECUNAME" />  
+		<result property ="tp"     column="TP" /> 
+		<result property ="excange"   column="EXCANGE" />     
+		<result property ="open"    column="OPEN" />
+		<result property ="high"    column="HIGH" />
+		<result property ="low"     column="LOW" /> 
+		<result property ="close"    column="CLOSE" />      
+		<result property ="preClose"  column="PRECLOSE" />     
+		<result property ="vol"     column="VOL" /> 
+		<result property ="amt"     column="AMT" /> 
+		<result property ="askprice5"  column="ASKPRICE5" />    
+		<result property ="askvol5"   column="ASKVOL5" />     
+		<result property ="askprice4"  column="ASKPRICE4" />    
+		<result property ="askcol4"   column="ASKCOL4" />     
+		<result property ="askprice3"  column="ASKPRICE3" />    
+		<result property ="askvol3"   column="ASKVOL3" />     
+		<result property ="askprice2"  column="ASKPRICE2" />    
+		<result property ="askvol2"   column="ASKVOL2" />     
+		<result property ="askvol1"   column="ASKVOL1" />     
+		<result property ="askprice1"  column="ASKPRICE1" />    
+		<result property ="bidprice1"  column="BIDPRICE1" />    
+		<result property ="bidvol1"   column="BIDVOL1" />     
+		<result property ="bidprice2"  column="BIDPRICE2" />    
+		<result property ="bidvol2"   column="BIDVOL2" />     
+		<result property ="bidprice3"  column="BIDPRICE3" />    
+		<result property ="bidvol3"   column="BIDVOL3" />     
+		<result property ="bidprice4"  column="BIDPRICE4" />    
+		<result property ="bidvol4"   column="BIDVOL4" />     
+		<result property ="bidprice5"  column="BIDPRICE5" />    
+		<result property ="bidvol5"   column="BIDVOL5" />     
+		<result property ="zf"     column="ZF" /> 
+		<result property ="zd"     column="ZD" /> 
+		<result property ="zt"     column="ZT" /> 
+		<result property ="dt"     column="DT" /> 
+		<result property ="xs"     column="XS" /> 
+		<result property ="actualxs"  column="ACTUALXS" />     
+		<result property ="xe"     column="XE" /> 
+		<result property ="hs"     column="HS" /> 
+		<result property ="amp"     column="AMP" /> 
+		<result property ="lb"     column="LB" /> 
+		<result property ="wb"     column="WB" /> 
+		<result property ="wc"     column="WC" /> 
+		<result property ="nwp"     column="NWP" /> 
+		<result property ="np"     column="NP" /> 
+		<result property ="wp"     column="WP" /> 
+		<result property ="sp"     column="SP" /> 
+		<result property ="detailid"  column="DETAILID" />     
+	</resultMap>
+	<sql id="MarketDataVo_insert"> 
+		<if test="uuid!=null"> UUID</if>
+		<if test="djxh!=null"> ,DJXH</if>
+		<if test="jylsh!=null"> ,JYLSH</if>
+		<if test="zsxm_dm!=null"> ,ZSXM_DM</if>
+		<if test="yzpzzl_dm!=null"> ,YZPZZL_DM</if>
+		<if test="sssqQ!=null"> ,SKSSQQ</if>
+		<if test="sssqZ!=null"> ,SKSSQZ</if>
+		<if test="jsyj!=null"> ,JSYJ</if>
+		<if test="ynse!=null"> ,YNSE</if>
+		<if test="ybtse!=null"> ,YBTSE</if>
+		<if test="jyzt_dm!=null"> ,JYZT_DM</if>
+		<if test="cwyy!=null"> ,CWYY</if>
+		<if test="yzpzxh!=null"> ,YZPZXH</if>
+		<if test="sjgsdq!=null"> ,SJGSDQ</if>
+		<if test="zgswjgDm!=null"> ,ZGSWJGDM</if>
+		<if test="sjly!=null"> ,SJLY</if>
+		<if test="cwgzlx!=null"> ,CWGZLX</if>
+		<if test="zfbz!=null"> ,ZFBZ</if>
+		<if test="lrrq!=null"> ,LRRQ</if>
+		<if test="lrr!=null"> ,LRR</if>
+		<if test="xgrq!=null"> ,XGRQ</if>
+		<if test="xgr!=null"> ,XGR</if>
+		<if test="sbbbb!=null"> ,SBBBB</if>
+		<if test="pdfname!=null"> ,PDFNAME</if>
+	</sql>
+	<sql id="MarketDataVo_insertValue">
+		<if test="uuid!=null"> #{uuid}</if>
+		<if test="djxh!=null"> ,#{djxh}</if>
+		<if test="jylsh!=null"> ,#{jylsh}</if>
+		<if test="zsxm_dm!=null"> ,#{zsxm_dm}</if>
+		<if test="yzpzzl_dm!=null"> ,#{yzpzzl_dm}</if>
+		<if test="sssqQ!=null"> ,#{sssqQ}</if>
+		<if test="sssqZ!=null"> ,#{sssqZ}</if>
+		<if test="jsyj!=null"> ,#{jsyj}</if>
+		<if test="ynse!=null"> ,#{ynse}</if>
+		<if test="ybtse!=null"> ,#{ybtse}</if>
+		<if test="jyzt_dm!=null"> ,#{jyzt_dm}</if>
+		<if test="cwyy!=null"> ,#{cwyy}</if>
+		<if test="yzpzxh!=null"> ,#{yzpzxh}</if>
+		<if test="sjgsdq!=null"> ,#{sjgsdq}</if>
+		<if test="zgswjgDm!=null"> ,#{zgswjgDm}</if>
+		<if test="sjly!=null"> ,#{sjly}</if>
+		<if test="cwgzlx!=null"> ,#{cwgzlx}</if>
+		<if test="zfbz!=null"> ,#{zfbz}</if>
+		<if test="lrrq!=null"> ,#{lrrq}</if>
+		<if test="lrr!=null"> ,#{lrr}</if>
+		<if test="xgrq!=null"> ,#{xgrq}</if>
+		<if test="xgr!=null"> ,#{xgr}</if>
+		<if test="sbbbb!=null"> ,#{sbbbb}</if>
+		<if test="pdfname!=null"> ,#{pdfname}</if>
+	</sql>
+
+	<insert id="createMarketData" parameterType="quickfix.examples.vo.MarketRealDataVo">
+		<![CDATA[
+			insert into real_time_case(
+		]]>
+		<include refid="MarketDataVo_insert"/>
+		<![CDATA[		
+			) values(
+		]]>
+		<include refid="MarketDataVo_insertValue"/>
+		<![CDATA[
+			)
+		]]>
+	</insert>
+	<sql id="MarketDataVo_updateSet">
+		<set>
+			<if test="jyzt_dm!=null and jyzt_dm!=''"> JYZT_DM=#{jyzt_dm}</if>
+			<if test="cwyy!=null and cwyy!=''"> ,CWYY=#{cwyy}</if>
+			<if test="yzpzxh!=null and yzpzxh!=''"> ,YZPZXH=#{yzpzxh}</if>
+			<if test="zfbz!=null and zfbz!=''"> ,ZFBZ=#{zfbz}</if>
+			<if test="xgrq!=null"> ,XGRQ=#{xgrq}</if>
+		</set>
+	</sql>
+	
+	<select id="selectMarketList" parameterType="quickfix.examples.vo.MarketRealDataVo" resultType="quickfix.examples.vo.MarketRealDataVo">
+		select * from real_time_case t 
+	</select>
+</mapper>

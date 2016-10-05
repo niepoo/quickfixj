@@ -1,10 +1,11 @@
-package quickfix.examples.datapub;
+package quickfix.examples.vo;
 /**
  * 金融数据实时行情vo
  * @author niepoo
  *
  */
 public class MarketRealDataVo {
+	public String uuid;//uuid
 	public String quotetime;// 行情时间
 	public String marketTime;// 市场最新时间
 	public int secucode;// 证券代码
@@ -55,6 +56,12 @@ public class MarketRealDataVo {
 	public int wp;// 外盘数
 	public int sp;// 是否收盘
 	public int detailid;// 明细最新id
+	public String getUuid() {
+		return uuid;
+	}
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
 	public String getQuotetime() {
 		return quotetime;
 	}

@@ -8,7 +8,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import com.dbcon.base.util.SpringContextHolder;
+
 import quickfix.examples.executor.MarketDataProvider;
+import quickfix.examples.sevice.BaseDataService;
+import quickfix.examples.vo.MarketRealDataVo;
 
 public class MarketDataProviderImpl implements MarketDataProvider{
 	//实时行情对应循环队列
@@ -21,11 +25,14 @@ public class MarketDataProviderImpl implements MarketDataProvider{
 		if(dataCreateThread ==null){
 			dataCreateThread = new ExecuteThread();
 		}
-		MarketRealDataVo mrdVo = new MarketRealDataVo();
-		mrdVo.setSecucode(1);//证券代码
-		mrdVo.setSecuname("平安银行");
-		mrdVo.setClose(9.07f);
-		initMarketDataList.add(mrdVo);
+		BaseDataService baseDataService= SpringContextHolder.getBean(BaseDataService.beanId);
+//		MarketRealDataVo mrdVo = new MarketRealDataVo();
+//		mrdVo.setSecucode(1);//证券代码
+//		mrdVo.setSecuname("平安银行");
+//		mrdVo.setClose(9.07f);
+//		initMarketDataList.add(mrdVo); 
+		Map paramsMap = new HashMap();
+		initMarketDataList = baseDataService.selectMarketList(paramsMap);
 	}
 	//开始产生实时数据
 	public void createData(){
