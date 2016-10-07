@@ -8,54 +8,40 @@ import quickfix.examples.vo.MarketRealDataVo;
 public class TestMain {
  
     public static void main(String[] args) {
-//        RoundQueue<Integer> queue=new RoundQueue<Integer>(10000);
-//         
-//        /* 添加数据 */
-//        for(int i=0;!queue.isFull();i++){
-//            queue.addLast(i);
-//        }
-//        queue.pushLast(110000);
-//        System.out.println(" getTail :>"+queue.getTail());
-//         
-//        System.out.println(" 1 indexOf :>"+queue.indexOf(1));
-//        System.out.println(" real size before :>"+queue.realSize());
-//        System.out.println(" first element :>"+queue.removeFirst());
-//        System.out.println(" real size after:>"+queue.realSize());
-//         
-//        if(!queue.isFull())  queue.addLast(10);
-//        queue.pushLast(1242);
-//        System.out.println(" getTail :>"+queue.getTail());
-//        /*遍历结果*/
-//        while(!queue.isEmpty()){
-//            System.out.println(queue.removeFirst());
-//        }
-         
-     
+
         MarketDataProviderImpl marketData = new MarketDataProviderImpl();
-        marketData.createData();
+        marketData.beginCreateData();
         try {
-			Thread.sleep(1000);
+			Thread.sleep(4000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+        //marketData.stopCreateData();
         /*遍历结果*/
         while(!MarketDataProviderImpl.marketDataRQ.isEmpty()){
         	Map map = MarketDataProviderImpl.marketDataRQ;
-        	for (Iterator iterator = map.keySet().iterator(); iterator.hasNext();) {
-				String code = (String) iterator.next();
-				RoundQueue<MarketRealDataVo> rq = (RoundQueue<MarketRealDataVo>) map.get(code);
+//        	for (Iterator iterator = map.keySet().iterator(); iterator.hasNext();) {
+//				String code = (String) iterator.next();
+				RoundQueue<MarketRealDataVo> rq = (RoundQueue<MarketRealDataVo>) map.get("4");
 				try{
 				MarketRealDataVo vo = rq.removeFirst();
 				if(vo!=null){
-					System.out.println("股票代码：" + vo.getSecucode() + ",行情时间：" + vo.getQuotetime());
+					System.out.println("查询结果****股票代码：" + vo.getSecucode() + ",行情时间：" + vo.getQuotetime());
 
 				}
-				Thread.sleep(100);
+				Thread.sleep(30);
 				}catch(Exception e){
 					
 				}
-			}
+//			}
+//        	try {
+//    			Thread.sleep(6000);
+//    		} catch (InterruptedException e) {
+//    			// TODO Auto-generated catch block
+//    			e.printStackTrace();
+//    		}
+//            marketData.beginCreateData();
            // System.out.println(queue.removeFirst());
         }
     }
