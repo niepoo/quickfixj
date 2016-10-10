@@ -434,9 +434,10 @@ public class MessageCodeGenerator {
             boolean useDecimal = getOption(BIGDECIMAL_TYPE_OPTION, false);
 
             long start = System.currentTimeMillis();
-            final String[] versions = { "FIXT 1.1", "FIX 5.0", "FIX 4.4", "FIX 4.3", "FIX 4.2",
+            final String[] versions = { "FIXT 1.1T","FIXT 1.1", "FIX 5.0", "FIX 4.4", "FIX 4.3", "FIX 4.2",
                     "FIX 4.1", "FIX 4.0", "FIX 5.0sp1", "FIX 5.0sp2" };
             final String[] SpecificationPath = { 
+            		"../quickfixj-messages/quickfixj-messages-fixt11T/src/main/resources",
             		"../quickfixj-messages/quickfixj-messages-fixt11/src/main/resources",
             		"../quickfixj-messages/quickfixj-messages-fix50/src/main/resources",
             		"../quickfixj-messages/quickfixj-messages-fix44/src/main/resources",
@@ -448,6 +449,7 @@ public class MessageCodeGenerator {
             		"../quickfixj-messages/quickfixj-messages-fix50sp2/src/main/resources"
                     };
             final String[] TransformDirectoryPath = { 
+            		"../quickfixj-codegenerator/src/main/resources/org/quickfixj/codegenerator",
             		"../quickfixj-codegenerator/src/main/resources/org/quickfixj/codegenerator", 
             		"../quickfixj-codegenerator/src/main/resources/org/quickfixj/codegenerator", 
             		"../quickfixj-codegenerator/src/main/resources/org/quickfixj/codegenerator", 
@@ -459,6 +461,7 @@ public class MessageCodeGenerator {
             		"../quickfixj-codegenerator/src/main/resources/org/quickfixj/codegenerator"
                     };
             final String[] OutputBaseDirectoryPath = { 
+            		"../quickfixj-core/src/main/java", 
             		"../quickfixj-core/src/main/java", 
             		"../quickfixj-core/src/main/java", 
             		"../quickfixj-core/src/main/java", 

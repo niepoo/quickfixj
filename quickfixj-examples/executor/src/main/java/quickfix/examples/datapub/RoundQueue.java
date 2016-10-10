@@ -11,15 +11,15 @@ public class RoundQueue<T> implements Serializable{
      
     private static final long serialVersionUID = -873109114121357176L;
      
-    private T[] queue;
-    private int head=0;
-    private int tail=0;
-    private int realSize=0;//实际容量
+    private T[] queueArray;
+    private int qhead=0;
+    private int qtail=0;
+    private int qrealSize=0;//实际容量
      
     //初始的大小为10
     @SuppressWarnings("unchecked")
     public RoundQueue(int size){
-        queue=(T[])new Object[(size<=0) ? 10 : size];
+        queueArray=(T[])new Object[(size<=0) ? 10 : size];
     }
      
     /**
@@ -28,11 +28,11 @@ public class RoundQueue<T> implements Serializable{
      */
     public void addLast(T element){
         if(isFull()){
-            throw new QueueElementFullException();
+            throw new NoSuchElementException();
         }
-        tail=(head+realSize)%queue.length;
-        queue[tail]=(T) element;
-        realSize++;
+        qtail=(qhead+qrealSize)%queueArray.length;
+        queueArray[qtail]=(T) element;
+        qrealSize++;
          
     }
     /**
@@ -43,9 +43,9 @@ public class RoundQueue<T> implements Serializable{
         if(isFull()){
             this.removeFirst();
         }
-        tail=(head+realSize)%queue.length;
-        queue[tail]=(T) element;
-        realSize++;
+        qtail=(qhead+qrealSize)%queueArray.length;
+        queueArray[qtail]=(T) element;
+        qrealSize++;
          
     } 
      
@@ -58,10 +58,10 @@ public class RoundQueue<T> implements Serializable{
             throw new NoSuchElementException();
         }
          
-        T tempLog=queue[head];
-        queue[head]=null;
-        head=(head+1)% queue.length;
-        realSize--;
+        T tempLog=queueArray[qhead];
+        queueArray[qhead]=null;
+        qhead=(qhead+1)% queueArray.length;
+        qrealSize--;
          
         return tempLog;
     }
@@ -73,7 +73,7 @@ public class RoundQueue<T> implements Serializable{
         if(isEmpty()){
             throw new NoSuchElementException();
         }
-        T tempLog=queue[head];
+        T tempLog=queueArray[qhead];
         return tempLog;
     }  
     
@@ -85,7 +85,7 @@ public class RoundQueue<T> implements Serializable{
        if(isEmpty()){
            throw new NoSuchElementException();
        }
-       T tempLog=queue[tail];
+       T tempLog=queueArray[qtail];
        return tempLog;
    }
      
@@ -93,8 +93,8 @@ public class RoundQueue<T> implements Serializable{
      * 队列真实的数量
      * @return int
      */
-    public int realSize(){
-        return realSize;
+    public int qrealSize(){
+        return qrealSize;
     }
      
      
@@ -103,7 +103,7 @@ public class RoundQueue<T> implements Serializable{
      * @return boolean
      */
     public boolean isEmpty() {
-        return realSize() == 0;
+        return qrealSize() == 0;
     }
      
     /**
@@ -112,7 +112,7 @@ public class RoundQueue<T> implements Serializable{
      */
     public boolean isFull()
     {
-        return realSize()==queue.length;
+        return qrealSize()==queueArray.length;
     }
      
     /**
@@ -130,12 +130,12 @@ public class RoundQueue<T> implements Serializable{
      * @return int
      */
     public T get(int index){
-         if (index < 0 || index >= realSize)
+         if (index < 0 || index >= qrealSize)
          {
-             throw new IndexOutOfBoundsException("Index: "+index+ ", Size: "+realSize);
+             throw new IndexOutOfBoundsException("Index: "+index+ ", Size: "+qrealSize);
          }
          
-        return queue[index];
+        return queueArray[index];
     }
     /**
      * 获取元素在队列中的索引,找到就返回其位置，找不到就返回-1
@@ -148,8 +148,8 @@ public class RoundQueue<T> implements Serializable{
             return -1;
          }else{
              int index = 0;
-             while(index<=realSize()-1){
-                 if(key.equals(queue[index]))
+             while(index<=qrealSize()-1){
+                 if(key.equals(queueArray[index]))
                      return index;
                  index++;
              }
