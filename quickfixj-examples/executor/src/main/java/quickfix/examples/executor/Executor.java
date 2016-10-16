@@ -28,10 +28,13 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.management.JMException;
 import javax.management.ObjectName;
@@ -52,6 +55,9 @@ import quickfix.ScreenLogFactory;
 import quickfix.SessionID;
 import quickfix.SessionSettings;
 import quickfix.SocketAcceptor;
+import quickfix.examples.datapub.DataRunnable;
+import quickfix.examples.datapub.ThreadPool;
+import quickfix.examples.vo.MarketRealDataVo;
 import quickfix.mina.acceptor.DynamicAcceptorSessionProvider;
 import quickfix.mina.acceptor.DynamicAcceptorSessionProvider.TemplateMapping;
 
@@ -74,7 +80,20 @@ public class Executor {
 
         configureDynamicSessions(settings, application, messageStoreFactory, logFactory,
                 messageFactory);
-
+//        Timer timer = new Timer();
+//		timer.scheduleAtFixedRate(new TimerTask() {
+//			public void run() {
+//				String time=Calendar.getInstance().getTime().toString(); 
+//				System.out.println(time + ":-------设定sessionID--------");
+//				ArrayList<SessionID>  test = acceptor.getSessions();
+//				for (Iterator iterator = test.iterator(); iterator.hasNext();) {
+//					SessionID sessionID = (SessionID) iterator.next();
+//					System.out.println("sessionID:" + sessionID.toString());
+//				}
+//				
+//				
+//			}
+//			}, 1000, 10*1000);
         jmxExporter = new JmxExporter();
         connectorObjectName = jmxExporter.register(acceptor);
         log.info("Acceptor registered with JMX, name=" + connectorObjectName);
@@ -165,7 +184,7 @@ public class Executor {
     private static InputStream getSettingsInputStream(String[] args) throws FileNotFoundException {
         InputStream inputStream = null;
         if (args.length == 0) {
-            inputStream = Executor.class.getResourceAsStream("executor.cfg");
+            inputStream = Executor.class.getResourceAsStream("executorTest.cfg");
         } else if (args.length == 1) {
             inputStream = new FileInputStream(args[0]);
         }

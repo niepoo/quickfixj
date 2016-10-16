@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class name="quickfix.examples.datapub.DataRunnable" x="103" y="802">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="quickfix.examples.datapub.logic.RandomWalk"
+            endpointName="randomWalk" kind="Simple"/>
+        <Communication destinationClassName="quickfix.examples.datapub.logic.RandomWalk"/>
+    </Class>
+    <Class name="quickfix.examples.datapub.logic.RandomWalk" x="115" y="507">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="quickfix.examples.datapub.logic.Point"
+            endpointName="visitedPoints" kind="Aggregation">
+            <Point x="58" y="590"/>
+            <Point x="59" y="222"/>
+        </Association>
+        <Association
+            destinationClassName="quickfix.examples.datapub.logic.Point"
+            endpointName="initialPoint" kind="Simple">
+            <Point x="488" y="589"/>
+            <Point x="488" y="225"/>
+        </Association>
+        <Association
+            destinationClassName="quickfix.examples.datapub.logic.Point"
+            endpointName="currentPoint" kind="Simple"/>
+        <Communication destinationClassName="quickfix.examples.datapub.logic.Point"/>
+    </Class>
+    <Class name="quickfix.examples.executor.MarketDataProvider" x="970" y="233">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="quickfix.examples.datapub.RoundQueue" x="627" y="724">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="quickfix.examples.datapub.PoolThread" x="594" y="502">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="quickfix.examples.datapub.MarketDataProviderImpl"
+        x="949" y="520">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="quickfix.examples.executor.MarketDataProvider"/>
+        <Communication destinationClassName="quickfix.examples.datapub.ThreadPool"/>
+    </Class>
+    <Class name="quickfix.examples.datapub.ThreadPool" x="651" y="217">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="quickfix.examples.datapub.PoolThread"
+            endpointName="unloader" kind="Simple"/>
+        <Communication destinationClassName="quickfix.examples.datapub.PoolThread"/>
+    </Class>
+    <Class name="quickfix.examples.datapub.logic.Point" x="152" y="129">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+</ClassDiagram>
